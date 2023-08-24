@@ -23,6 +23,7 @@
   padding: 14px 15px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  cursor: pointer;
 }
 
 .film__title {
