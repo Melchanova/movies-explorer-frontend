@@ -111,6 +111,7 @@
 }
 
 .form__input:focus {
+  background-color: #787c7a;
   opacity: 0.6;
 }
 

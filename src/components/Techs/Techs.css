@@ -61,8 +61,8 @@
 }
 
 .techs__list-item:hover {
-  border: 1px solid #3ddc84;
-  background-color: rgba(43, 224, 128, 0.2);
+  border: 1px solid #787c7a;
+  background-color: rgba(79, 82, 80, 0.2);
 }
 
 @media screen and (max-width: 1023px) {

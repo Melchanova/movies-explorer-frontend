@@ -39,6 +39,16 @@
 }
 
 .header__btn_active {
+  min-height: 32px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.7s;
   color: #2be080;
 }
 
@@ -75,7 +85,7 @@
   opacity: 0.6;
 }
 
-.header__menu-button {
+.header__menu-btn {
   background-color: #fff;
   border: none;
   width: 44px;
@@ -85,7 +95,7 @@
   transition: 0.7s;
 }
 
-.header__menu-button:hover {
+.header__menu-btn:hover {
   opacity: 0.6;
 }
 
@@ -102,7 +112,7 @@
     display: none;
   }
 
-  .header__menu-button {
+  .header__menu-btn {
     display: flex;
   }
 }

@@ -1,46 +1,31 @@
-import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import "./Header.css";
-import Logo from "../../images/logo.svg";
-import Account from "../../images/account-btn.svg";
-import Menu from "../../images/menu-button.svg";
-import Navigation from "../Navigation/Navigation";
+import React, { useState } from "react"
+import { Link, NavLink } from "react-router-dom"
+import "./Header.css"
+import logo from "../../images/logo.svg"
+import Navigation from "../Navigation/Navigation"
+import menu from "../../images/menu-btn.svg"
+import account from "../../images/account-btn.svg"
 
-function Header() {
-  const location = useLocation();
+function Header({ loggedIn }) {
+  const [isClicked, setIsClicked] = useState(false)
 
-  // Временная функция для проверки, нужно ли отображать второй хедер
-  const showTwoHeader = () => {
-    const { pathname } = location;
-    return (
-      pathname === "/movies" ||
-      pathname === "/saved-movies" ||
-      pathname === "/profile"
-    );
-  };
+  const setActiveLink = ({ isActive }) =>
+    isActive ? "header__btn_active" : "header__btn"
 
-  // Временная функция для проверки, нужно ли отображать первый хедер
-  const showOneHeader = () => {
-    const { pathname } = location;
-    return pathname === "/";
-  };
-
-  const [isClicked, setIsClicked] = React.useState(false);
-
-  function handleOpen() {
-    setIsClicked(true);
+  function handleOpenMenu() {
+    setIsClicked(true)
   }
 
-  function handleClose() {
-    setIsClicked(false);
+  function handleCloseMenu() {
+    setIsClicked(false)
   }
 
   return (
     <>
-      {showOneHeader() && (
+      {!loggedIn ? (
         <header className="header" id="header">
           <Link to="/" className="logo">
-            <img src={Logo} alt="Логотип приложения"/>
+            <img src={logo} alt="Смайлик"/>
           </Link>
           <div className="header__btn-container">
             <Link to="/signup" className="header__btn">
@@ -51,26 +36,16 @@ function Header() {
             </Link>
           </div>
         </header>
-      )}
-
-      {showTwoHeader() && (
+      ) : (
         <header className="header header_gray" id="header-gray">
           <Link to="/" className="logo">
-            <img src={Logo} alt="Логотип приложения"/>
+            <img src={logo} alt="Смайлик"/>
           </Link>
           <div className="header__btn-container-films">
-            <NavLink
-              to="/movies"
-              className="header__btn"
-              activeclassname="header__btn_active"
-            >
+            <NavLink to="/movies" className={setActiveLink}>
               Фильмы
             </NavLink>
-            <NavLink
-              to="/saved-movies"
-              className="header__btn"
-              activeclassname="header__btn_active"
-            >
+            <NavLink to="/saved-movies" className={setActiveLink}>
               Сохранённые фильмы
             </NavLink>
           </div>
@@ -78,19 +53,23 @@ function Header() {
             <Link to="/profile" className="header__account-btn">
               <img
                 className="header__account-image"
-                src={Account}
+                src={account}
                 alt="Кнопка входа в аккаунт"
               />
             </Link>
-            <button className="header__menu-button" onClick={handleOpen}>
-              <img src={Menu} alt="Кнопка меню"/>
+            <button className="header__menu-btn" onClick={handleOpenMenu}>
+              <img src={menu} alt="Кнопка меню" />
             </button>
           </div>
-          {isClicked ? <Navigation handleClose={handleClose}/> : ""}
+          {isClicked ? (
+            <Navigation handleCloseMenu={handleCloseMenu} />
+          ) : (
+            ""
+          )}
         </header>
       )}
     </>
-  );
+  )
 }
 
-export default Header;
+export default Header

@@ -40,7 +40,7 @@
 }
 
 .filter__checkbox:checked {
-  background: #2be080; /* Измененный цвет фона для активного чекбокса */
+  background: #2be080;
 }
 
 .filter__checkbox:checked::after {

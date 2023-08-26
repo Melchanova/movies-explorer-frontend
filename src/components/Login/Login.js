@@ -1,15 +1,32 @@
 import React from "react"
-import "../Form/Form.css"
+import { EMAIL_REGEX } from "../../utils/constants"
+import useForm from "../../hooks/useForm"
 import Form from "../Form/Form"
+import "../Form/Form.css"
 
-function Login() {
+function Login({ onAuthorization, isLoading }) {
+
+  const { enteredValues, errors, handleChangeInput, isFormValid } = useForm()
+
+  function submitUserInfo(event) {
+    event.preventDefault()
+    onAuthorization({
+      email: enteredValues.email,
+      password: enteredValues.password,
+    })
+  }
+
   return (
     <Form
       title="Рады видеть!"
-      btnText="Войти"
+      buttonText="Войти"
       question="Еще не зарегистрированы?"
       linkText=" Регистрация"
       link="/signup"
+      onSubmit={submitUserInfo}
+      isDisabledButton={!isFormValid}
+      isLoading={isLoading}
+      noValidate
     >
       <label className="form__label">
         E-mail
@@ -18,10 +35,13 @@ function Login() {
           className="form__input"
           id="email-input"
           type="email"
+          placeholder="Ваш Email"
+          onChange={handleChangeInput}
+          pattern={EMAIL_REGEX}
+          value={enteredValues.email || ""}
           required
-          placeholder="Ваш Email" 
         />
-        <span className="form__input-error">Адрес электронной почты должен содержать символ "@".</span>
+        <span className="form__input-error">{errors.email}</span>
       </label>
       <label className="form__label">
         Пароль
@@ -30,10 +50,14 @@ function Login() {
           className="form__input"
           id="password-input"
           type="password"
+          placeholder="Ваш пароль"
+          onChange={handleChangeInput}
+          value={enteredValues.password || ""}
+          minLength="6"
+          maxLength="12"
           required
-          placeholder="Ваш пароль" 
         />
-        <span className="form__input-error">Введите пароль</span>
+        <span className="form__input-error">{errors.password}</span>
       </label>
     </Form>
   )

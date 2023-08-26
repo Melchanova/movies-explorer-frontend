@@ -10,7 +10,7 @@ function Footer() {
       <div className="footer__container">
         <p className="footer__author">
           {" "}
-          © {new Date().getFullYear()}.
+          © {new Date().getFullYear()}
         </p>
         <a
           href="https://practicum.yandex.ru"

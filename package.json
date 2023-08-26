@@ -1,11 +1,12 @@
 {
   "name": "movies-explorer-frontend",
-  "description": "Сайт по поиску фильмов. Дипломная работа",
+  "homepage": "",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Дипломная работа.",
   "main": "index.js",
   "author": "Melchanova Marianna",
   "license": "ISC",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -47,5 +48,4 @@
   "devDependencies": {
     "gh-pages": "^5.0.0"
   }
-  
 }

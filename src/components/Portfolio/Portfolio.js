@@ -1,5 +1,5 @@
 import React from "react";
-import Arrow from "../../images/arrow.svg";
+import arrow from "../../images/arrow.svg";
 import "./Portfolio.css";
 
 function Portfolio() {
@@ -16,8 +16,8 @@ function Portfolio() {
           <p className="portfolio__description">Статичный сайт</p>
           <img
             className="portfolio__image"
-            src={Arrow}
-            alt="Стрелка для ссылки"
+            src={arrow}
+            alt="Стрелка-переход"
           />
         </a>
         <a
@@ -29,8 +29,8 @@ function Portfolio() {
           <p className="portfolio__description">Адаптивный сайт</p>
           <img
             className="portfolio__image"
-            src={Arrow}
-            alt="Стрелка для ссылки"
+            src={arrow}
+            alt="Стрелка-переход"
           />
         </a>
         <a
@@ -42,8 +42,8 @@ function Portfolio() {
           <p className="portfolio__description">Одностраничное приложение</p>
           <img
             className="portfolio__image"
-            src={Arrow}
-            alt="Стрелка для ссылки"
+            src={arrow}
+            alt="Стрелка-переход"
           />
         </a>
       </nav>

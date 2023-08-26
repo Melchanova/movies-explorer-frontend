@@ -49,7 +49,7 @@
   padding: 20px;
 }
 
-.preloader__container {
+.preloader__wrapper {
   width: 100px;
   height: 100px;
   position: relative;
