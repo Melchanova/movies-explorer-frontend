@@ -2,7 +2,7 @@
 
 ## Размещение проекта (Яндекс.Облако):
 
-IP 158.160.74.132
+IP 158.160.26.243
 фронтенд - https://cinema.nomoreparties.co
 бэкенд - https://api.cinema.nomoreparties.co
 
