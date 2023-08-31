@@ -1,6 +1,6 @@
-import { handleRequest } from "./functions"
+import { handleRequest } from "./functions";
 
-export const BASE_URL = "https://api.nomoreparties.co/beatfilm-movies"
+export const BASE_URL = "https://api.nomoreparties.co/beatfilm-movies";
 
 export function getMovies() {
   return fetch(BASE_URL, {
@@ -8,5 +8,5 @@ export function getMovies() {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => handleRequest(res))
+  }).then((res) => handleRequest(res));
 }

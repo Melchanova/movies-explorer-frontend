@@ -1,37 +1,37 @@
-import React, { useState, useEffect } from "react"
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox"
-import { useLocation } from "react-router-dom"
-import "./SearchForm.css"
+import React, { useState, useEffect } from "react";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import { useLocation } from "react-router-dom";
+import "./SearchForm.css";
 
 function SearchForm({ searchFilterMovie, onfilterMoviesFilms, isShortMovies }) {
-  const location = useLocation()
+  const location = useLocation();
 
-  const [isQueryError, setIsQueryError] = useState(false)
+  const [isQueryError, setIsQueryError] = useState(false);
 
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     if (
       location.pathname === "/movies" &&
       localStorage.getItem("movieSearch")
     ) {
-      const localQuery = localStorage.getItem("movieSearch")
-      setQuery(localQuery)
+      const localQuery = localStorage.getItem("movieSearch");
+      setQuery(localQuery);
     }
-  }, [location])
+  }, [location]);
 
   function submitUserInfo(e) {
-    e.preventDefault()
+    e.preventDefault();
     if (query.trim().length === 0) {
-      setIsQueryError(true)
+      setIsQueryError(true);
     } else {
-      setIsQueryError(false)
-      searchFilterMovie(query)
+      setIsQueryError(false);
+      searchFilterMovie(query);
     }
   }
 
   function handleQueryValue(event) {
-    setQuery(event.target.value)
+    setQuery(event.target.value);
   }
 
   return (
@@ -59,7 +59,7 @@ function SearchForm({ searchFilterMovie, onfilterMoviesFilms, isShortMovies }) {
 
       <div className="search__border-btn"></div>
     </section>
-  )
+  );
 }
 
-export default SearchForm
+export default SearchForm;

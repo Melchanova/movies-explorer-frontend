@@ -1,7 +1,6 @@
-import { handleRequest } from "./functions"
+import { handleRequest } from "./functions";
 
- // export const BASE_URL = 'https://api.cinema.nomoreparties.co';
-   export const BASE_URL = "http://localhost:3000"
+export const BASE_URL = "https://api.cinema.nomoreparties.co";
 
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
@@ -11,8 +10,8 @@ export const getContent = (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};
 
 export const getUserInfo = () => {
   return fetch(`${BASE_URL}/users/me`, {
@@ -21,8 +20,8 @@ export const getUserInfo = () => {
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       "Content-Type": "application/json",
     },
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};
 
 export const updateProfileUserInfo = (data) => {
   return fetch(`${BASE_URL}/users/me`, {
@@ -35,8 +34,8 @@ export const updateProfileUserInfo = (data) => {
       name: data.name,
       email: data.email,
     }),
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -46,8 +45,8 @@ export const register = (name, email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, email, password }),
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};
 
 export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
@@ -57,8 +56,8 @@ export const authorize = (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};
 
 export const getMovies = () => {
   return fetch(`${BASE_URL}/movies`, {
@@ -67,8 +66,8 @@ export const getMovies = () => {
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       "Content-Type": "application/json",
     },
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};
 
 export const addCard = (data) => {
   return fetch(`${BASE_URL}/movies`, {
@@ -91,8 +90,8 @@ export const addCard = (data) => {
       nameRU: data.nameRU,
       nameEN: data.nameEN,
     }),
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};
 
 export const deleteCard = (cardId) => {
   return fetch(`${BASE_URL}/movies/${cardId}`, {
@@ -101,5 +100,5 @@ export const deleteCard = (cardId) => {
       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       "Content-Type": "application/json",
     },
-  }).then((res) => handleRequest(res))
-}
+  }).then((res) => handleRequest(res));
+};

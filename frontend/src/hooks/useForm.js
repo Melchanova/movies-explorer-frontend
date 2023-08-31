@@ -1,36 +1,35 @@
-import { useState, useCallback } from "react"
+import { useState, useCallback } from "react";
 
 const useForm = () => {
-  const [enteredValues, setEnteredInputValues] = useState({})
-  const [isFormValid, setIsFormValid] = useState(false)
-  const [errors, setErrors] = useState({})
+  const [enteredValues, setEnteredInputValues] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChangeInput = (event) => {
-    const name = event.target.name
-    const value = event.target.value
+    const name = event.target.name;
+    const value = event.target.value;
 
     setEnteredInputValues({
       ...enteredValues,
       [name]: value,
-    })
+    });
 
     setErrors({
       ...errors,
       [name]: event.target.validationMessage,
-    })
+    });
 
-    setIsFormValid(event.target.closest("#form").checkValidity())
-  }
+    setIsFormValid(event.target.closest("#form").checkValidity());
+  };
 
   const resetForm = useCallback(
     (newValues = {}, newErrors = {}, newIsFormValid = false) => {
-
-      setEnteredInputValues(newValues)
-      setErrors(newErrors)
-      setIsFormValid(newIsFormValid)
+      setEnteredInputValues(newValues);
+      setErrors(newErrors);
+      setIsFormValid(newIsFormValid);
     },
     [setEnteredInputValues, setErrors, setIsFormValid]
-  )
+  );
 
   return {
     enteredValues,
@@ -38,7 +37,7 @@ const useForm = () => {
     isFormValid,
     errors,
     resetForm,
-  }
-}
+  };
+};
 
-export default useForm
+export default useForm;

@@ -1,23 +1,23 @@
-import React, { useState } from "react"
-import { Link, NavLink } from "react-router-dom"
-import "./Header.css"
-import logo from "../../images/logo.svg"
-import Navigation from "../Navigation/Navigation"
-import menu from "../../images/menu-btn.svg"
-import account from "../../images/account-btn.svg"
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import "./Header.css";
+import logo from "../../images/logo.svg";
+import Navigation from "../Navigation/Navigation";
+import menu from "../../images/menu-btn.svg";
+import account from "../../images/account-btn.svg";
 
 function Header({ loggedIn }) {
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
 
   const setActiveLink = ({ isActive }) =>
-    isActive ? "header__btn_active" : "header__btn"
+    isActive ? "header__btn_active" : "header__btn";
 
   function handleOpenMenu() {
-    setIsClicked(true)
+    setIsClicked(true);
   }
 
   function handleCloseMenu() {
-    setIsClicked(false)
+    setIsClicked(false);
   }
 
   return (
@@ -58,18 +58,14 @@ function Header({ loggedIn }) {
               />
             </Link>
             <button className="header__menu-btn" onClick={handleOpenMenu}>
-              <img src={menu} alt="Кнопка меню" />
+              <img src={menu} alt="Кнопка меню"/>
             </button>
           </div>
-          {isClicked ? (
-            <Navigation handleCloseMenu={handleCloseMenu} />
-          ) : (
-            ""
-          )}
+          {isClicked ? <Navigation handleCloseMenu={handleCloseMenu} /> : ""}
         </header>
       )}
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;

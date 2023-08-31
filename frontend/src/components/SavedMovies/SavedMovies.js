@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from "react"
-import MoviesCardList from "../MoviesCardList/MoviesCardList"
-import Header from "../Header/Header"
-import { filterMoviesFilms, filterDurationTime } from "../../utils/functions"
-import SearchForm from "../SearchForm/SearchForm"
-import Footer from "../Footer/Footer"
+import React, { useState, useEffect } from "react";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Header from "../Header/Header";
+import { filterMoviesFilms, filterDurationTime } from "../../utils/functions";
+import SearchForm from "../SearchForm/SearchForm";
+import Footer from "../Footer/Footer";
 
 function SavedMovies({ loggedIn, savedMovies, onDeleteCard }) {
-  const [filteredMovies, setFilteredMovies] = useState(savedMovies)
-  const [isShortMovies, setisShortMovies] = useState(false)
-  const [isNotFound, setIsNotFound] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
+  const [filteredMovies, setFilteredMovies] = useState(savedMovies);
+  const [isShortMovies, setisShortMovies] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   function searchFilterMovie(query) {
-    setSearchQuery(query)
+    setSearchQuery(query);
   }
 
   function handleShortFilterCheckbox() {
-    setisShortMovies(!isShortMovies)
+    setisShortMovies(!isShortMovies);
   }
 
   useEffect(() => {
-    const moviesCardList = filterMoviesFilms(savedMovies, searchQuery)
+    const moviesCardList = filterMoviesFilms(savedMovies, searchQuery);
     setFilteredMovies(
       isShortMovies ? filterDurationTime(moviesCardList) : moviesCardList
-    )
-  }, [savedMovies, isShortMovies, searchQuery])
+    );
+  }, [savedMovies, isShortMovies, searchQuery]);
 
   useEffect(() => {
     if (filteredMovies.length === 0) {
-      setIsNotFound(true)
+      setIsNotFound(true);
     } else {
-      setIsNotFound(false)
+      setIsNotFound(false);
     }
-  }, [filteredMovies])
+  }, [filteredMovies]);
 
   return (
     <section className="movies">
@@ -50,7 +50,7 @@ function SavedMovies({ loggedIn, savedMovies, onDeleteCard }) {
       />
       <Footer />
     </section>
-  )
+  );
 }
 
-export default SavedMovies
+export default SavedMovies;

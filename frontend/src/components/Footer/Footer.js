@@ -8,10 +8,7 @@ function Footer() {
         Учебный проект Яндекс.Практикум х BeatFilm.
       </h3>
       <div className="footer__container">
-        <p className="footer__author">
-          {" "}
-          © {new Date().getFullYear()}
-        </p>
+        <p className="footer__author"> © {new Date().getFullYear()}</p>
         <a
           href="https://practicum.yandex.ru"
           className="footer__link"

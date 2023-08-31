@@ -1,20 +1,19 @@
-import React from "react"
-import Form from "../Form/Form"
-import useForm from "../../hooks/useForm"
-import { EMAIL_REGEX } from "../../utils/constants"
-import "../Form/Form.css"
+import React from "react";
+import Form from "../Form/Form";
+import useForm from "../../hooks/useForm";
+import { EMAIL_REGEX } from "../../utils/constants";
+import "../Form/Form.css";
 
 function Register({ onRegister, isLoading }) {
-
-  const { enteredValues, errors, handleChangeInput, isFormValid } = useForm()
+  const { enteredValues, errors, handleChangeInput, isFormValid } = useForm();
 
   function submitUserInfo(event) {
-    event.preventDefault()
+    event.preventDefault();
     onRegister({
       name: enteredValues.name,
       email: enteredValues.email,
       password: enteredValues.password,
-    })
+    });
   }
 
   return (
@@ -76,7 +75,7 @@ function Register({ onRegister, isLoading }) {
         <span className="form__input-error">{errors.password}</span>
       </label>
     </Form>
-  )
+  );
 }
 
-export default Register
+export default Register;
