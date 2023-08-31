@@ -1,4 +1,3 @@
-// Подключение модуля celebrate из пакета celebrate для валидации запросов
 const { Joi, celebrate } = require('celebrate');
 
 // Подключение регулярного выражения

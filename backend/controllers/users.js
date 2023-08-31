@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 const { errorText } = require('../utils/constants');
 const ConflictError = require('../utils/errors/ConflictError');
-const ValidationError = require('../utils/errors/ValidationError');
+const ValidationError = require('../utils/errors/ValidatError');
 const NotFoundError = require('../utils/errors/NotFoundError');
 
 const { NODE_ENV, SECRET_KEY } = process.env;
@@ -44,10 +44,10 @@ const createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new ConflictError(errorText.emailDuplicationError));
+        next(new ConflictError(errorText.EMAILDUPLICATIONERROR));
       } else if (err.name === 'ValidationError') {
         next(
-          new ValidationError(errorText.validationError),
+          new ValidationError(errorText.INVALIDATIONERROR),
         );
       } else {
         next(err);
@@ -59,14 +59,14 @@ const getCurrentUserInfo = (req, res, next) => {
   const userId = req.user._id;
   User.findById(userId)
     .orFail(() => {
-      throw new NotFoundError(errorText.idNotFoubdError);
+      throw new NotFoundError(errorText.IDNOTFOUNDERROR);
     })
     .then((user) => {
       res.send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new ValidationError(errorText.userNotFoubdError));
+        next(new ValidationError(errorText.USERNOTFOUNDERROR));
       } else {
         next(err);
       }
@@ -85,17 +85,17 @@ const editProfileUserInfo = (req, res, next) => {
     },
   )
     .orFail(() => {
-      throw new NotFoundError(errorText.idNotFoubdError);
+      throw new NotFoundError(errorText.IDNOTFOUNDERROR);
     })
     .then((user) => {
       res.send(user);
     })
     .catch((err) => {
       if (err.code === 11000) {
-        next(new ConflictError(errorText.emailDuplicationError));
+        next(new ConflictError(errorText.EMAILDUPLICATIONERROR));
       } else if (err.name === 'ValidationError') {
         next(
-          new ValidationError(errorText.validationError),
+          new ValidationError(errorText.INVALIDATIONERROR),
         );
       } else {
         next(err);

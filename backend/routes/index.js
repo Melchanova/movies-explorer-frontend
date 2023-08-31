@@ -24,7 +24,7 @@ router.use('/', userRouter);
 router.use('/', movieRouter);
 
 router.use('*', (req, res, next) => {
-  next(new NotFoundError(errorText.notFoubdError));
+  next(new NotFoundError(errorText.NOTFOUNDERROR));
 });
 
 module.exports = router;

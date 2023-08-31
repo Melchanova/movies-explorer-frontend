@@ -14,7 +14,7 @@ const userSchema = Schema({
     unique: true,
     validate: {
       validator: (v) => isEmail(v),
-      message: errorText.emailValidationError,
+      message: errorText.EMAILVALIDATIONERROR,
     },
   },
   password: {
@@ -34,13 +34,13 @@ userSchema.statics.findUserByCredentials = function findOne(email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        return Promise.reject(new UnauthorizedError(errorText.authetificationError));
+        return Promise.reject(new UnauthorizedError(errorText.AUTHETIFICATIONERROR));
       }
 
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            return Promise.reject(new UnauthorizedError(errorText.authetificationError));
+            return Promise.reject(new UnauthorizedError(errorText.AUTHETIFICATIONERROR));
           }
           return user;
         });

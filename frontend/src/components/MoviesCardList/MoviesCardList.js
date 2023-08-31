@@ -9,6 +9,11 @@ import {
   NUMBER_MOVIES_DESKTOP,
   TABLET_ITEMS_DISPLAY,
   MOBILE_ITEMS_DISPLAY,
+  SIZE_DESKTOP,
+  SIZE_TABLET,
+  SIZE_TWELVE,
+  SIZE_EIGHT,
+  SIZE_FIVE,
 } from "../../utils/constants";
 
 function MoviesCardList({
@@ -27,14 +32,18 @@ function MoviesCardList({
   function calculateMoviesWidht() {
     const display = window.innerWidth;
     
-    if (display > 1180) {
-      setShownMovies(12);
-    } else if (display > 767) {
-      setShownMovies(8);
+    if (display > SIZE_DESKTOP) {
+      setShownMovies(SIZE_TWELVE);
+    } else if (display > SIZE_TABLET) {
+      setShownMovies(SIZE_EIGHT);
     } else {
-      setShownMovies(5);
+      setShownMovies(SIZE_FIVE);
     }
   }
+
+  useEffect(() => { 
+    calculateMoviesWidht(); 
+  }, [cards]);
 
   useEffect(() => {
     let resizeTimeout;
@@ -59,9 +68,9 @@ function MoviesCardList({
   function increaseShownMovies() {
     const display = window.innerWidth;
     
-    if (display > 1180) {
+    if (display > SIZE_DESKTOP) {
       setShownMovies(shownMovies + NUMBER_MOVIES_DESKTOP);
-    } else if (display > 767) {
+    } else if (display > SIZE_TABLET) {
       setShownMovies(shownMovies + TABLET_ITEMS_DISPLAY);
     } else {
       setShownMovies(shownMovies + MOBILE_ITEMS_DISPLAY);

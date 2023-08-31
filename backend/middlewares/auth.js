@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer')) {
-    throw new UnauthorizedError(errorText.authenticateError);
+    throw new UnauthorizedError(errorText.AUTHENTICATEERROR);
   }
 
   const token = authorization.replace('Bearer ', '');
@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
       NODE_ENV === 'production' ? SECRET_KEY : SECRET_KEY_DEV,
     );
   } catch (err) {
-    next(new UnauthorizedError(errorText.authenticateError));
+    next(new UnauthorizedError(errorText.AUTHENTICATEERROR));
     return;
   }
   // Присваиваем расшифрованные данные токена в объект запроса

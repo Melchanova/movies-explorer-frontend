@@ -51,7 +51,6 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
   }
 
   function handleShortFilterCheckbox() {
-    console.log("включить чекбокс")
     setisShortMovies(!isShortMovies)
     if (!isShortMovies) {
       if (filterDurationTime(initialCardsMovies).length === 0) {

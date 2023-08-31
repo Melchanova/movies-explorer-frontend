@@ -2,7 +2,7 @@ const Movie = require('../models/movie');
 
 const { errorText } = require('../utils/constants');
 const ForbiddenError = require('../utils/errors/ForbiddenError');
-const ValidationError = require('../utils/errors/ValidationError');
+const ValidationError = require('../utils/errors/ValidatError');
 const NotFoundError = require('../utils/errors/NotFoundError');
 
 // Получение массива с фильмами
@@ -49,7 +49,7 @@ const createMovie = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(
-          new ValidationError(errorText.validationError),
+          new ValidationError(errorText.INVALIDATIONERROR),
         );
       } else {
         next(err);
@@ -61,7 +61,7 @@ const createMovie = (req, res, next) => {
 const deleteMovie = (req, res, next) => {
   Movie.findById(req.params.movieId)
     .orFail(() => {
-      throw new NotFoundError(errorText.idNotFoubdError);
+      throw new NotFoundError(errorText.IDNOTFOUNDERROR);
     })
     .then((movie) => {
       const owner = movie.owner.toString();
@@ -74,12 +74,12 @@ const deleteMovie = (req, res, next) => {
           })
           .catch(next);
       } else {
-        throw new ForbiddenError(errorText.movieDeleteError);
+        throw new ForbiddenError(errorText.MOVIEDELETEERROR);
       }
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new ValidationError(errorText.validationError));
+        next(new ValidationError(errorText.INVALIDATIONERROR));
       } else {
         next(err);
       }

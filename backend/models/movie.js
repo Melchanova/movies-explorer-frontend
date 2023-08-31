@@ -33,7 +33,7 @@ const movieSchema = Schema({
     required: true,
     validate: {
       validator: (v) => isURL(v),
-      message: errorText.urlValidationError,
+      message: errorText.URLVALIDATIONERROR,
     },
   },
   trailerLink: {
@@ -41,7 +41,7 @@ const movieSchema = Schema({
     required: true,
     validate: {
       validator: (v) => isURL(v),
-      message: errorText.urlValidationError,
+      message: errorText.URLVALIDATIONERROR,
     },
   },
   thumbnail: {
@@ -49,7 +49,7 @@ const movieSchema = Schema({
     required: true,
     validate: {
       validator: (v) => isURL(v),
-      message: errorText.urlValidationError,
+      message: errorText.URLVALIDATIONERROR,
     },
   },
   owner: {
