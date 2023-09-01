@@ -2,6 +2,8 @@ import { handleRequest } from "./functions";
 
 export const BASE_URL = "https://api.cinema.nomoreparties.co";
 
+// export const BASE_URL = "http://localhost:3000"
+
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",

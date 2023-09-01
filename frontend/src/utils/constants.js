@@ -6,8 +6,8 @@ const EMAIL_REGEX = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.[a-z]{2,}"
 
 const MAX_SHORT_DURATION = 40
 
-const SIZE_DESKTOP = 1180
-const SIZE_TABLET = 767
+const SIZE_DESKTOP = 1022
+const SIZE_TABLET = 766
 
 const SIZE_TWELVE = 12
 const SIZE_EIGHT = 8
